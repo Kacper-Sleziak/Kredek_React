@@ -1,6 +1,9 @@
 import '../css/pizza.css'
 import pizza from '../images/pizza.jpg'
 
+
+// Komponent odpowiadający pojedyńczej pizzy
+// DO przekazania komponentów zasotosowano destrukturazacje 
 function Pizza({name, price, spicy, time}){
     return(
         <div

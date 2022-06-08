@@ -39,11 +39,18 @@ function App() {
     ]
   )
 
+  // States odpowiadające inputą do tworzenia
+  // nowej pizzy
   const [price, setPrice] = useState(0);
   const [spicy, setSpicy] = useState(0);
   const [time, setTime] = useState(0);
   const [name, setName] = useState("");
+  
 
+
+  // Funkcja renderuje wszystkie pizze 
+  // mapując dane z pizzas i używając kompoentu 
+  // Pizza do wizualizacji każdej z nich
   const renderPizzas = () => {
     return(
       pizzas.map((pizza) => (
@@ -57,6 +64,10 @@ function App() {
     );
   }
 
+
+
+  // Funckja tworzy nową pizza 
+  // i dodaje ją do state'a pizzas
   const createPizza = () => {
     const pizza = {
       name: name,
