@@ -1,5 +1,8 @@
 # Kredek
 
+## Opis
+Repozytorium stworzone w celu zajęć prowadzonych w ramach koła naukowego ,,Kredek"
+
 ## Tworzenie podstawowego projektu 
 Aby stworzyć swój podstawowy projekt w Reacie należy:
 1. Zainstalować na swoim komputerze node'a https://nodejs.org/en/
