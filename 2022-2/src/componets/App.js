@@ -1,132 +1,126 @@
-import '../css/App.css';
+import { useState, useEffect } from "react";
 import Nav from './Nav'
+import '../css/App.css'
 import Pizza from './Pizza'
-
-import React, {useState} from "react";
+import { render } from "@testing-library/react";
 
 function App() {
-
+  // State z lista obiektow pizza do wysiwetlania
   const [pizzas, setPizzas] = useState(
     [
       {
-        name: "hawajska",
-        spicy: 2,
-        time: 15,
-        price: 26,
-      },
-
-      {
         name: "peporni",
-        spicy: 8,
-        time: 25,
+        spicy: 3,
+        time: 15,
         price: 35,
       },
-
       {
-        name: "afrykanska",
-        spicy: 10,
-        time: 35,
+        name: "capricciosa",
+        spicy: 2,
+        time: 25,
         price: 40,
+      }, 
+      {
+        name: "margarita",
+        spicy: 6,
+        time: 10,
+        price: 22,
       },
 
       {
-        name: "serowa",
-        spicy: 1,
-        time: 15,
-        price: 55,
+        name: "hawajska",
+        spicy: 0,
+        time: 40,
+        price: 50,
       },
 
     ]
   )
-
-  // States odpowiadające inputą do tworzenia
-  // nowej pizzy
+  
+  // staty zapisujące zmiany tet fieldow
   const [price, setPrice] = useState(0);
   const [spicy, setSpicy] = useState(0);
   const [time, setTime] = useState(0);
   const [name, setName] = useState("");
   
-
-
-  // Funkcja renderuje wszystkie pizze 
-  // mapując dane z pizzas i używając kompoentu 
-  // Pizza do wizualizacji każdej z nich
+  // funkcja odpowiadajaca za wysiwetlanie komponetow pizzy
   const renderPizzas = () => {
     return(
       pizzas.map((pizza) => (
         <Pizza
-        key={pizza.name}
-        name={pizza.name}
-        price={pizza.price}
-        spicy={pizza.spicy}
-        time={pizza.time}
+          key={pizza.name}
+          name={pizza.name}
+          spiciness={pizza.spicy}
+          price={pizza.price}
+          time={pizza.time}
         />
       ))
     );
   }
-
-
-
-  // Funckja tworzy nową pizza 
-  // i dodaje ją do state'a pizzas
+  
   const createPizza = () => {
-    const pizza = {
+    var newPizza = {
       name: name,
       spicy: spicy,
       time: time,
       price: price,
     }
 
-    setPizzas([...pizzas, pizza]);
+    setPizzas([...pizzas, newPizza])
 
     setPrice(0);
     setSpicy(0);
     setTime(0);
-    setName("");
+    setName("")
+
   }
 
   return (
     <>
       <Nav/>
-      <div 
+      <div
       id="main_box"
       >
-        {renderPizzas()}
+      {renderPizzas()}
       </div>
 
       <div
       id="inputs"
       >
         <div>
-          <span>Nazwa</span>
+          <span>Name</span>
           <input
           onChange={(e) => setName(e.target.value)}
+          value={name}
           >
 
           </input>
         </div>
         
         <div>
-          <span>Cena</span>
+          <span>Price</span>
           <input
           onChange={(e) => setPrice(e.target.value)}
+          value={price}
           >
           </input>
         </div>
         
         <div>
-          <span>Ostrość</span>
+          <span>Spicness</span>
           <input
           onChange={(e) => setSpicy(e.target.value)}
+          value={spicy}
           >
 
           </input>
         </div>
         
         <div>
-          <span>Czas przygotowania</span>
+          <span>Time</span>
           <input
           onChange={(e) => setTime(e.target.value)}
+          value={time}
           >
           </input>
         </div>
@@ -138,7 +132,6 @@ function App() {
         Dodaj pizze
         </button>
       </div>
-
     </>
   );
 }
